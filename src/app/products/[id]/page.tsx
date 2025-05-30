@@ -2,9 +2,9 @@ import { Metadata } from 'next'
 // import { notFound } from 'next/navigation'
 
 interface Props {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 // 动态生成元数据
