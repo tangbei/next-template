@@ -14,7 +14,7 @@ function getLocale(request: NextRequest): string | undefined {
 }
 
 export default function middleware(request: NextRequest) {
-  console.log('middleware--- ', request.url);
+  console.log('middleware--- aaa', request.url);
   const pathname = request.nextUrl.pathname;
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`

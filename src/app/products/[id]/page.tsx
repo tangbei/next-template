@@ -16,22 +16,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export async function get({ params }: Props): Promise<Metadata> {
-  const { id } = await params;
-
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-  const post = await res.json()
-  
-  return {
-    title: `Product ${post.title} - My Store`,
-    description: `Details for product ${post.body}`,
-  }
-}
-
 export default async function ProductPage({ params }: Props) {
   const { id } = await params;
   console.log('id', id);
-  const metadata = await get({ params });
+
+  async function getJson({ params }: Props): Promise<Metadata> {
+    const { id } = await params;
+  
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    const post = await res.json()
+    
+    return {
+      title: `Product ${post.title} - My Store`,
+      description: `Details for product ${post.body}`,
+    }
+  }
+  
+  const metadata = await getJson({ params });
 
   console.log('metadata', metadata);
 
