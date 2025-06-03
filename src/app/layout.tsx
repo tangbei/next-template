@@ -15,18 +15,47 @@ export const metadata: Metadata = {
  * @returns 
  */
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+
+  const container = false;
+  
+  const renderContainerOne = () => {
+    return (
+      <div className="container">
+        <main className="content">
+          <div className="inner">
+            <div>我是根布局</div>
+            <AntdRegistry>
+              {children}
+            </AntdRegistry>
+          </div>
+        </main>
+        <div className="left"></div>
+        <div className="right"></div>
+      </div>
+    );
+  };
+
+  const renderContainerTwo = () => {
+    return (
+      <div className="main-container">
+        <main className="main-inner">
+          <div>我是根布局</div>
+          <AntdRegistry>
+            {children}
+          </AntdRegistry>
+        </main>
+      </div>
+    );
+  };
+
   return (
     <html lang="en">
-      <Head>
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <meta charSet='utf-8' />
-        <title>tang-nextjs</title>
-      </Head>
       <body>
-        <div>我是根布局</div>
-        <AntdRegistry>
-          {children}
-        </AntdRegistry>
+        <div className="root">
+          {
+            container ? renderContainerOne() : renderContainerTwo()
+          }
+        </div>
       </body>
     </html>
   );
