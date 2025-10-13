@@ -1,35 +1,42 @@
 {
   "name": "tang-next",
-  "version": "0.1.0",
+  "description": "基于Nextjs的SSR模版项目",
+  "version": "1.0.0",
+  "author": "tanggoat",
   "private": true,
+  "type": "module",
+  "main": "./src/app/layout.tsx",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "node ./scripts/dev.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@ant-design/nextjs-registry": "^1.0.2",
-    "@formatjs/intl-localematcher": "^0.6.1",
-    "@types/negotiator": "^0.6.3",
-    "antd": "^5.25.3",
-    "install": "^0.13.0",
-    "negotiator": "^1.0.0",
-    "next": "15.3.2",
+    "@ant-design/nextjs-registry": "1.0.2",
+    "@formatjs/intl-localematcher": "0.6.1",
+    "@types/negotiator": "0.6.3",
+    "antd": "5.25.3",
+    "classnames": "2.5.1",
+    "install": "0.13.0",
+    "negotiator": "1.0.0",
+    "next": "15.5.4",
+    "query-string": "^9.3.1",
     "react": "18.3.0",
     "react-dom": "18.3.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
+    "@eslint/eslintrc": "3",
+    "@types/node": "20",
+    "@types/react": "19",
+    "@types/react-dom": "19",
+    "eslint": "9",
     "eslint-config-next": "15.3.2",
-    "sass": "^1.89.0",
-    "typescript": "^5"
+    "sass": "1.89.0",
+    "typescript": "5"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=20.0.0",
+    "pnpm": ">=10.0.0"
   }
 }
