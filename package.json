@@ -8,8 +8,8 @@
   "main": "./src/app/layout.tsx",
   "scripts": {
     "dev": "node ./scripts/dev.mjs",
-    "build": "next build",
-    "start": "next start",
+    "build": "node ./scripts/build.mjs",
+    "start": "node ./scripts/start.mjs",
     "lint": "next lint"
   },
   "dependencies": {
@@ -32,6 +32,7 @@
     "@types/react-dom": "19",
     "eslint": "9",
     "eslint-config-next": "15.3.2",
+    "fs-extra": "11.3.2",
     "sass": "1.89.0",
     "typescript": "5"
   },

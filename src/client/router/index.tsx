@@ -4,18 +4,26 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import LoginGuard from "./guard/LoginGuard";
 
+import style from "./index.module.scss";
+
+interface IBuildRouterProps {
+  children: React.ReactNode
+}
+
 /**
  * 初始化路由组件
  * @returns 
  */
-export const BuildRouter = ({ children }: Readonly<{ children: React.ReactNode }>) => {
+export const BuildRouter = ({ children }: Readonly<IBuildRouterProps>) => {
 
   return (
-    <div>
+    <div className={style.container}>
       <Header />
     
       <LoginGuard>
-        {children}
+        <main className={style['main-container']}>
+          {children}
+        </main>
       </LoginGuard>
 
       <Footer />

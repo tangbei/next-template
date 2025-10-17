@@ -1,5 +1,15 @@
-import { execSync } from "child_process";
-import NextEnv from "@next/env";
+/*
+ * @Author: dyb-dev
+ * @Date: 2025-07-29 20:35:52
+ * @LastEditors: dyb-dev
+ * @LastEditTime: 2025-07-29 22:41:31
+ * @FilePath: /next-ssr-web-template/scripts/start.mjs
+ * @Description: 启动 Next.js 生产服务入口
+ */
+
+import { execSync } from "child_process"
+
+import NextEnv from "@next/env"
 
 /** CONST: 加载环境变量函数 */
 const { loadEnvConfig } = NextEnv
@@ -8,17 +18,16 @@ const { loadEnvConfig } = NextEnv
 const projectDir = process.cwd()
 
 /** CONST: 当前环境变量 */
-const { parsedEnv } = loadEnvConfig(projectDir, true)
+const { parsedEnv } = loadEnvConfig(projectDir, false)
 
-const { PORT, DEBUG, HTTPS } = parsedEnv
+const { OUT_DIR, PORT, DEBUG } = parsedEnv
 
 /** CONST: 构建命令参数 */
 const commandParts = [
     DEBUG === "true" ? "cross-env NODE_OPTIONS='--inspect'" : "",
-    "next dev",
-    "--turbopack",
-    `--port ${PORT}`,
-    HTTPS === "true" ? "--experimental-https" : ""
+    // `node ./${OUT_DIR}/standalone/server.js`,
+    "next start",
+    `--port ${PORT}`
 ]
 
 /** CONST: 过滤空参数并拼接成完整命令 */

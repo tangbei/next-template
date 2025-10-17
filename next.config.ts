@@ -1,8 +1,24 @@
 import type { NextConfig } from "next/types";
 import path from "path";
 
+const { NEXT_PUBLIC_BASE_PATH, OUT_DIR  } = process.env;
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  basePath: NEXT_PUBLIC_BASE_PATH,
+  distDir: OUT_DIR,
+
+
+  // Scss 配置
+  sassOptions: {
+    // 指定 Scss 编译器的实现
+    // implementation: "sass-embedded",
+    // Scss 全局引入
+    // additionalData: `
+    //     @use "./src/common/styles/scss-var.scss" as *;
+    //     @use "./src/common/styles/mixins/index.scss" as *;
+    //     @use "./src/common/styles/funs/index.scss" as *;
+    // `
+  },
 };
 
 export default nextConfig;
