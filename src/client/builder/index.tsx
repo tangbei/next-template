@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { isClientEnv } from "@/common/utils";
 import { builderAPI } from "./api";

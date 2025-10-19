@@ -1,3 +1,4 @@
+import { setupServerApiInterceptors } from "@/common/apis/interceptors/serverInterceptors";
 
 // 是否初始化
 let _isCreate = false;
@@ -15,4 +16,6 @@ export const builderAPI = () => {
   _isCreate = true;
 
   // TODO
+
+  setupServerApiInterceptors();
 };

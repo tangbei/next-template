@@ -25,7 +25,7 @@ const Header = () => {
   return (
     <header className={style['main-header']}>
       <div className={style['main-header-container']}>
-        <img src="aa" />
+        {/* <img src="aa" /> */}
         <nav className={style.mainNav}>
           <div className={style.navList}>
             <ul className={style.navListLeft}>

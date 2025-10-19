@@ -1,6 +1,7 @@
 import type { Metadata } from "next/types";
 import ClientBuilder from "@/client/builder";
 import ServerBuilder from "@/server/builder";
+import '@ant-design/v5-patch-for-react-19';
 
 import "@/common/styles/index.scss";
 
@@ -11,7 +12,7 @@ type IRootLayoutProps = {
 export const metadata: Metadata = {
   title: "tang-nextjs",
   description: "Next-SSR-Web-Template",
-  keywords: ["Next-SSR-Web-Template"]
+  keywords: ["Next-SSR-Web-Template"],
 };
 
 /**
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
  */
 const RootLayout = ({ children }: Readonly<IRootLayoutProps>) => {
   return (
-    <html lang="en">
+    <html>
       <body>
         <ClientBuilder>
           <ServerBuilder>

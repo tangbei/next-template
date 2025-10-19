@@ -1,3 +1,4 @@
+import { setupClientApiInterceptors } from "@/common/apis/interceptors/clientInterceptors";
 
 let _isCreate = false;
 
@@ -11,4 +12,7 @@ export const builderAPI = () => {
   _isCreate = true;
 
   // TODO
+
+  setupClientApiInterceptors();
+  
 };
