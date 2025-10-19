@@ -17,27 +17,11 @@ import { request1 } from "@/common/apis/modules";
 //   };
 // };
 
-export async function generateStaticParams() {
-  // 返回一个路径参数数组，用于静态生成
-  console.log('执行--generateStaticParams');
-  return [
-    { id: '1' },
-    { id: '2' },
-  ];
-}
-
-
 /**
  * 主页面
  * @returns 
  */
 const Home = (props?: any) => {
-  // console.log('home--props', props);
-  // const router = useRouter();
-
-  // const onHandleRouterClick = () => {
-    // router.push('/products/22');
-  // };
 
   const onHandleClick = async () => {
     const res = await request1({});

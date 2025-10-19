@@ -1,7 +1,13 @@
 import React from "react";
+import type { ResolvingMetadata } from 'next'
 import { request2 } from "@/common/apis/modules";
 
 import style from "./page.module.scss";
+
+type IProps = {
+  params: Promise<{ id: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
 
 // 定义数据类型
 interface IAboutData {
@@ -18,22 +24,17 @@ async function getData(): Promise<IAboutData> {
   return res?.data || {};
 }
 
-export async function generateMetadata() {
+/**
+ * 动态元数据依赖于动态信息，例如当前路由参数、外部数据或父段中的 metadata，可以通过导出返回 Metadata 对象 的 generateMetadata 函数来设置。
+ * @returns 
+ */
+export async function generateMetadata({ params, searchParams }: IProps, parent: ResolvingMetadata) {
   console.log('generateMetadata--->');
   return {
     title: '我是about页面',
     description: 'tang-nextjs',
   }
 }
-
-// export async function generateStaticParams() {
-//   console.log('generateStaticParams--->');
-//   return [
-//     { id: '1' },
-//     { id: '2' },
-//     { id: '3' },
-//   ]
-// }
 
 // 定义组件 props 类型
 interface IAboutProps {

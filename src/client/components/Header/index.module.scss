@@ -47,6 +47,18 @@
   .navListLeft {
     display: flex;
     order: 99;
+
+    .navListItem {
+      font-size: 14px;
+      color: #86909c;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .navListItemActive {
+      font-weight: 500;
+      color: #1e80ff;
+    }
   }
 
   .navListRight {

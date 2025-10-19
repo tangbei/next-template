@@ -3,6 +3,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import LoginGuard from "./guard/LoginGuard";
+// import { Loading } from "@/client/components/Loading";
 
 import style from "./index.module.scss";
 
@@ -20,11 +21,13 @@ export const BuildRouter = ({ children }: Readonly<IBuildRouterProps>) => {
     <div className={style.container}>
       <Header />
     
-      <LoginGuard>
-        <main className={style['main-container']}>
-          {children}
-        </main>
-      </LoginGuard>
+      {/* <Loading> */}
+        <LoginGuard>
+          <main className={style['main-container']}>
+            {children}
+          </main>
+        </LoginGuard>
+      {/* </Loading> */}
 
       <Footer />
     </div>
