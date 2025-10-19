@@ -11,7 +11,7 @@ const headLab = [
   {
     label: '活动',
     value: 'activity',
-    link: '/activity',
+    link: '/activity/33',
   },
   {
     label: '个人中心',

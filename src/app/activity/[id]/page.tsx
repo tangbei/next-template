@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-// import { notFound } from 'next/navigation'
+import { request3 } from '@/common/apis/modules';
 
 interface Props {
   params: Promise<{
@@ -16,19 +16,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function ProductPage({ params }: Props) {
+const ActivityPage = async({ params }: Props) => {
   const { id } = await params;
   console.log('id', id);
 
   async function getJson({ params }: Props): Promise<Metadata> {
     const { id } = await params;
   
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-    const post = await res.json()
+    const res = await request3<{ title: string, desc: string }>({ id });
     
     return {
-      title: `Product ${post.title} - My Store`,
-      description: `Details for product ${post.body}`,
+      title: `Product ${res.data.title} - My Store`,
+      description: `Details for product ${res.data.desc}`,
     }
   }
   
@@ -66,4 +65,6 @@ export default async function ProductPage({ params }: Props) {
       </div>
     </main>
   )
-} 
+};
+
+export default ActivityPage;
