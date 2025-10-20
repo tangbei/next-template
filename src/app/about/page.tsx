@@ -41,8 +41,8 @@ interface IAboutProps {
   data: IAboutData;
 }
 
-const AboutPage = async (props?: IAboutProps) => {
-  console.log('AboutPage props--->', props);
+const AboutPage = async () => {
+  // console.log('AboutPage props--->', props);
 
   const data = await getData();
 
