@@ -5,7 +5,7 @@ const { NEXT_PUBLIC_BASE_PATH, OUT_DIR  } = process.env;
 
 const nextConfig: NextConfig = {
   basePath: NEXT_PUBLIC_BASE_PATH,
-  // distDir: OUT_DIR,
+  distDir: OUT_DIR,
 
   experimental: {
     // 选项将来自浏览器的控制台输出和运行时错误转发到开发服务器终端

@@ -40,20 +40,20 @@ try {
     console.log("✅ 构建完成，开始复制文件...\n")
 
     // 2. 复制 public 到 OUT_DIR/standalone/public
-    // const publicSrc = path.join(projectDir, "public")
-    // const publicDest = path.join(projectDir, OUT_DIR, "standalone", "public")
+    const publicSrc = path.join(projectDir, "public")
+    const publicDest = path.join(projectDir, OUT_DIR, "standalone", "public")
 
-    // fs.copySync(publicSrc, publicDest)
-    // console.log(`📁 复制 public → ${OUT_DIR}/standalone/public`)
+    fs.copySync(publicSrc, publicDest)
+    console.log(`📁 复制 public → ${OUT_DIR}/standalone/public`)
 
-    // // 3. 复制 static 到 OUT_DIR/standalone/OUT_DIR/static
-    // const staticSrc = path.join(projectDir, OUT_DIR, "static")
-    // const staticDest = path.join(projectDir, OUT_DIR, "standalone", OUT_DIR, "static")
+    // 3. 复制 static 到 OUT_DIR/standalone/OUT_DIR/static
+    const staticSrc = path.join(projectDir, OUT_DIR, "static")
+    const staticDest = path.join(projectDir, OUT_DIR, "standalone", OUT_DIR, "static")
 
-    // fs.copySync(staticSrc, staticDest)
-    // console.log(`📁 复制 ${OUT_DIR}/static → ${OUT_DIR}/standalone/${OUT_DIR}/static`)
+    fs.copySync(staticSrc, staticDest)
+    console.log(`📁 复制 ${OUT_DIR}/static → ${OUT_DIR}/standalone/${OUT_DIR}/static`)
 
-    // console.log("\n🎉 所有操作完成！\n")
+    console.log("\n🎉 所有操作完成！\n")
 
 }
 catch (error) {
