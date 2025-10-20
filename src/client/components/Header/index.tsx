@@ -14,7 +14,7 @@ const headLab = [
     link: '/activity/33',
   },
   {
-    label: '个人中心',
+    label: 'ai使用',
     value: 'auth',
     link: '/auth',
   },
