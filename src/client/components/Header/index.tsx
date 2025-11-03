@@ -19,6 +19,11 @@ const headLab = [
     link: '/auth',
   },
   {
+    label: '工具推荐',
+    value: 'tools',
+    link: '/tools',
+  },
+  {
     label: '关于',
     value: 'about',
     link: '/about',
@@ -51,8 +56,12 @@ const Header = () => {
               }
             </ul>
             <ul className={style.navListRight}>
-              <li>aaa</li>
-              <li>bbb</li>
+              <li style={{ marginRight: 10 }}>tangbei</li>
+              <li>
+                <a href="https://github.com/tangbei" target="_blank" rel="noopener noreferrer">
+                  <img src='/images/icon_github.svg' />
+                </a>
+              </li>
             </ul>
           </div>
         </nav>

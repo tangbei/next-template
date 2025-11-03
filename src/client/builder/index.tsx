@@ -3,7 +3,7 @@
 import { isClientEnv } from "@/common/utils";
 import { builderAPI } from "./api";
 import { BuildRouter } from "@/client/router";
-import { App, ConfigProvider } from "antd";
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 
 type IClientBuilderProps = {
   children: React.ReactNode
@@ -24,13 +24,11 @@ const ClientBuilder = ({ children }: Readonly<IClientBuilderProps>) => {
   }
 
   return (
-    <ConfigProvider>
-      <App>
-        <BuildRouter>
-          {children}
-        </BuildRouter>
-      </App>
-    </ConfigProvider>
+    <AntdRegistry>
+      <BuildRouter>
+        {children}
+      </BuildRouter>
+    </AntdRegistry>
   );
 };
 

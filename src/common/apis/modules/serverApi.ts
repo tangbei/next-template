@@ -15,3 +15,19 @@ export const request3 = <T>(params: any) => {
     data: params
   });
 };
+
+export const request4 = (params: any) => {
+  return TBRequest<any, IMetaData>({
+    url: '/tang/getToolsMeta',
+    method: 'get',
+    data: params
+  });
+};
+
+export const request5 = <T>(params: any) => {
+  return TBRequest<any, T>({
+    url: '/tang/getTools',
+    method: 'post',
+    data: params
+  });
+};

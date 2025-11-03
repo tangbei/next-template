@@ -25,11 +25,11 @@ const RootLayout = ({ children }: Readonly<IRootLayoutProps>) => {
   return (
     <html>
       <body>
-        <ClientBuilder>
-          <ServerBuilder>
-            {children}
-          </ServerBuilder>
-        </ClientBuilder>
+          <ClientBuilder>
+            <ServerBuilder>
+              {children}
+            </ServerBuilder>
+          </ClientBuilder>
       </body>
     </html>
   );

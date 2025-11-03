@@ -3,6 +3,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import LoginGuard from "./guard/LoginGuard";
+import { AntdProvider } from "../components/AntdProvider";
 // import { Loading } from "@/client/components/Loading";
 
 import style from "./index.module.scss";
@@ -18,18 +19,20 @@ interface IBuildRouterProps {
 export const BuildRouter = ({ children }: Readonly<IBuildRouterProps>) => {
 
   return (
-    <div className={style.container}>
-      <Header />
-    
-      {/* <Loading> */}
-        <LoginGuard>
-          <main className={style['main-container']}>
-            {children}
-          </main>
-        </LoginGuard>
-      {/* </Loading> */}
+    <AntdProvider>
+      <div className={style.container}>
+        <Header />
+      
+        {/* <Loading> */}
+          <LoginGuard>
+            <main className={style['main-container']}>
+              {children}
+            </main>
+          </LoginGuard>
+        {/* </Loading> */}
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </AntdProvider>
   );
 };
