@@ -1,9 +1,5 @@
-import React from 'react';
-import { Card, Avatar } from 'antd';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { request4, request5 } from '@/common/apis/modules/serverApi';
-
-import style from './page.module.scss';
+import { ToolsClient } from './ToolsClient';
 
 interface IToolsData {
   id: number;
@@ -21,7 +17,7 @@ export async function generateMetadata() {
     }
   } catch (error) {
     return {
-      title: '工具推荐oo',
+      title: '工具推荐',
       description: '各种前端工具推荐',
     }
   }
@@ -37,35 +33,14 @@ async function getData(): Promise<IToolsData[]> {
 }
 
 /**
- * 工具推荐页面
+ * 工具推荐页面（服务端组件）
+ * 负责数据获取，将数据传递给客户端组件
  * @returns 
  */
 const ToolsPage = async () => {
   const tools = await getData() as IToolsData[];
 
-  const actions: React.ReactNode[] = [
-    <EditOutlined key="edit" />,
-    <SettingOutlined key="setting" />,
-    <EllipsisOutlined key="ellipsis" />,
-  ];
-
-  return (
-    <div className={style.toolsContainer}>
-      <div className={style.toolsLabel}>推荐工具：<span>各种前端工具推荐</span></div>
-      <div className={style.gridContainer}>
-        {
-          tools.length > 0 && tools.map((item) => (
-            <Card
-              key={item.id}
-              actions={actions}
-            >
-              <div>{item.title}</div>
-            </Card>
-          ))
-        }
-      </div>
-    </div>
-  );
+  return <ToolsClient tools={tools} />;
 };
 
 export default ToolsPage;

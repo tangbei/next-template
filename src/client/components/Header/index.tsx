@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import style from './index.module.scss';
 
 const headLab = [
@@ -24,14 +25,26 @@ const headLab = [
     link: '/tools',
   },
   {
-    label: '关于',
-    value: 'about',
-    link: '/about',
+    label: '文章',
+    value: 'articles',
+    link: '/articles',
   }
 ];
 
 const Header = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const pathname = usePathname();
+
+  const getActiveIndex = () => {
+    const index = headLab.findIndex(item => {
+      if (item.link === '/') {
+        return pathname === '/';
+      }
+      return pathname === item.link || pathname.startsWith(item.link + '/');
+    });
+    return index < 0 ? 0 : index;
+  };
+
+  const activeIndex = getActiveIndex();
 
   return (
     <header className={style['main-header']}>
@@ -46,9 +59,6 @@ const Header = () => {
                     className={`${style.navListItem} ${activeIndex === index ? style.navListItemActive : ''}`}
                     key={item.value}
                     href={item.link}
-                    onClick={() => {
-                      setActiveIndex(index);
-                    }}
                   >
                     {item.label}
                   </Link>
