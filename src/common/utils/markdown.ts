@@ -5,8 +5,21 @@ import matter from "gray-matter";
 // date-fns：处理日期
 import { parseISO } from "date-fns";
 
+export interface IMarkDown {
+  order: number,
+  title: string,
+  date: string,
+  keyword: string[],
+  description: string,
+  nav: string,
+  group: {
+    title: string,
+    order: number
+  }
+}
+
 interface MatterMark {
-  data: { date: string; title: string };
+  data: IMarkDown;
   content: string;
   [key: string]: unknown;
 }
@@ -14,8 +27,12 @@ interface MatterMark {
 // posts目录的路径
 const postsDirectory = path.join(process.cwd(), "/src/docs");
 // 获取posts目录下的所有文件名（带后缀）
-const fileNames = fs.readdirSync(postsDirectory);
-console.log('postsDirectory', postsDirectory, 'fileNames', fileNames);
+const fileEntries = fs.readdirSync(postsDirectory, { withFileTypes: true });
+const fileNames = fileEntries
+  .filter((entry) => entry.isFile() && entry.name.endsWith('.md'))
+  .map((entry) => entry.name);
+  
+// console.log('postsDirectory', postsDirectory, 'fileNames', fileNames);
 
 // 获取所有文章用于展示列表的数据
 export function getSortedArticlesData() {
@@ -32,7 +49,7 @@ export function getSortedArticlesData() {
 
     // 使用matter提取md文件元数据：{data:{//元数据},content:'内容'}
     const matterResult = matter(fileContents);
-    console.log('matterResult', matterResult);
+    // console.log('matterResult', matterResult);
 
     return {
       id,
@@ -81,11 +98,9 @@ export function getAllPostIds() {
  * @returns 
  */
 export const getArticlesContent = async (id: string) => {
-  const title = decodeURIComponent(id);
-  
   // 文章路径
-  const fullPath = path.join(postsDirectory, `${title}.md`);
-console.log('id', title, 'fullPath', fullPath);
+  const fullPath = path.join(postsDirectory, `${id}.md`);
+
   // 读取文章内容
   const fileContents = fs.readFileSync(fullPath, "utf8");
 

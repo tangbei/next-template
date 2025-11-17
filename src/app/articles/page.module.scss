@@ -1,19 +1,14 @@
 .articlesContainer {
   padding-top: 20px;
 
-  .articlesLi {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
 
-    font-size: 20px;
-    padding: 20px 30px;
-    border-radius: 4px;
-    background: #fff;
+  .articlesContent {
+    flex: 1; 
+  }
 
-    > img {
-      width: 16px;
-      height: 16px;
-    }
+  .articlesAttach {
+    min-width: 300px;
+    padding-left: 20px;
   }
 }

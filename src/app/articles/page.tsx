@@ -1,8 +1,11 @@
 import React from "react";
 import type { ResolvingMetadata } from 'next';
 import Link from 'next/link';
+import Attachment from "@/client/components/Attachment";
+import ArticlesItem from './components/ArticlesItem';
 import { request2 } from "@/common/apis/modules";
-import { getSortedArticlesData } from "@/common/mock/utils";
+import { getSortedArticlesData } from "@/common/utils/markdown";
+import type { IMarkDown } from "@/common/utils/markdown";
 
 import style from "./page.module.scss";
 
@@ -12,11 +15,7 @@ type IProps = {
 }
 
 // 定义数据类型
-interface IArticlesData {
-  id: string;
-  date: string;
-  title?: string;
-}
+export interface IArticlesData extends IMarkDown {};
 
 // getStaticProps 在 App Router 中不支持，使用 generateStaticParams 替代
 
@@ -24,7 +23,7 @@ interface IArticlesData {
 async function getData(): Promise<IArticlesData[]> {
   // const res = await request2<IAboutData>({ id: 999 });
   const res = getSortedArticlesData();
-  console.log('getSortedArticlesData', res);
+  // console.log('getSortedArticlesData', res);
   return res || [];
 }
 
@@ -33,7 +32,7 @@ async function getData(): Promise<IArticlesData[]> {
  * @returns 
  */
 export async function generateMetadata({ params, searchParams }: IProps, parent: ResolvingMetadata) {
-  console.log('generateMetadata--->');
+  // console.log('generateMetadata--->');
   return {
     title: '我是文章列表',
     description: 'tang-nextjs',
@@ -46,24 +45,29 @@ interface IAboutProps {
 }
 
 const ArticlesPage = async () => {
-  // console.log('AboutPage props--->', props);
-
   const articles = await getData();
 
   return (
     <div className={style.articlesContainer}>
-      {
-        articles.map((item) => (
-          <Link
-            key={item.id}
-            className={style.articlesLi}
-            href={`/articles/${item.id}`}
-          >
-            <div>{item.title}</div>
-            <img src='/images/icon_right.svg' />
-          </Link>
-        ))
-      }
+      <div className={style.articlesContent}>
+        {
+          articles && articles.length > 0 ? (
+            articles.map((item) => (
+              <Link
+                key={item.order}
+                href={`/articles/${item.title}`}
+              >
+                <ArticlesItem key={item.order} item={item} />
+              </Link>
+            ))
+          ) : (
+            <div>暂无文章</div>
+          )
+        }
+      </div>
+      <div className={style.articlesAttach}>
+        <Attachment />
+      </div>
     </div>
   );
 };
