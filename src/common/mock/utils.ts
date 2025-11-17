@@ -40,9 +40,6 @@ export function getSortedArticlesData() {
     };
   });
 
-  console
-
-
     // 按照日期从进到远排序
   return allPostsData.sort(({ date: a }, { date: b }) =>
     // parseISO：字符串转日期

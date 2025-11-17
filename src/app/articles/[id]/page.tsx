@@ -45,11 +45,16 @@ const getData = async (id: string) => {
 const ArticlesDetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const res = await params;
   const data = await getData(res.id);
-  console.log('resssss---', data);
+  // console.log('resssss---', data);
 
   return (
     <div className={style.articlesContainer}>
-      <MarkDownRenderer content={data} />
+      <div className={style.articlesContainerLeft}>
+        左侧菜单
+      </div>
+      <div className={style.articlesContainerRight}>
+        <MarkDownRenderer content={data} />
+      </div>
     </div>
   );
 };

@@ -15,7 +15,9 @@ type IProps = {
 }
 
 // 定义数据类型
-export interface IArticlesData extends IMarkDown {};
+export interface IArticlesData extends IMarkDown {
+  type?: string;
+};
 
 // getStaticProps 在 App Router 中不支持，使用 generateStaticParams 替代
 

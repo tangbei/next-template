@@ -1,5 +1,6 @@
 import React from "react";
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import style from './index.module.scss';
 
@@ -69,7 +70,7 @@ const Header = () => {
               <li style={{ marginRight: 10 }}>tangbei</li>
               <li>
                 <a href="https://github.com/tangbei" target="_blank" rel="noopener noreferrer">
-                  <img src='/images/icon_github.svg' />
+                  <Image src='/images/icon_github.svg' alt="github" />
                 </a>
               </li>
             </ul>

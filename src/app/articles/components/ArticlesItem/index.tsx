@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import type { IArticlesData } from '../../page';
 
 import style from './index.module.scss';
@@ -40,7 +41,7 @@ const ArticlesItem = ({ item }: ArticlesItemProps) => {
             </div>
           </div>
         </div>
-        <img className={style.articlesLiImg} src="/images/icon_github.svg" alt={item.title || '文章图片'} />
+        <Image className={style.articlesLiImg} src="/images/icon_github.svg" alt={item.title || '文章图片'} />
       </div>
     </div>
   );
